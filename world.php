@@ -10,12 +10,25 @@ $stmt = $conn->query("SELECT * FROM countries WHERE name LIKE '%$country%'");
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
-echo '<ul>';
+echo '<table>';
+echo '<tr>';
+echo '<th> Country Name</th>';
+echo '<th> Continent</th>';
+echo '<th> Independence Year</th>';
+echo '<th> Head of State</th>';
+echo '</tr>';
 ?>
 <?php if (isset($country)) { 
    foreach ($results as $row){
-  echo '<li>'; echo $row['name'] . ' is ruled by ' . $row['head_of_state']; '</li>';
+  
+  echo '<tr>';
+   echo '<td>'; echo $row['name']; echo '</td>';
+   echo '<td>'; echo $row['continent']; echo '</td>';
+   echo '<td>'; echo $row['independence_year']; echo '</td>';
+   echo '<td>' . $row['head_of_state'] . '</td>';
+  
+  '</tr>';
      } 
     }
-echo '</ul>';
+echo '</table>';
 ?>

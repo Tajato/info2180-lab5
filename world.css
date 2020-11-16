@@ -1,1 +1,13 @@
 /* Add your own styles */
+
+header {
+    background-color:purple;
+}
+
+header h1 {
+    color:white;
+}
+
+main {
+    background-color:seashell;
+}
