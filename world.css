@@ -1,18 +1,54 @@
 /* Add your own styles */
 
-.header {
-    background-image: url('images/krzysztof-hepner-TH7TW20de9s-unsplash.jpg');
-    background-size: cover;
+* {
+    margin:0px;
     
+}
+
+.header {
+    background-color: purple;
 }
 
 
 header h1 {
     color:white;
     padding:30px;
+    font-size:80px;
+    text-align: center;
+    margin-left:10px;
 }
 
 
+
+#controls {
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+   
+}
+
+#lookup, #lookup1 {
+    width:200px;
+    margin:10px;
+    padding:10px;
+    cursor:pointer;
+    border-radius: 5px;
+    color:white;
+   
+}
+
+#lookup {
+    background-color:green;
+}
+#lookup1{
+    background-color: blue;
+}
+#country {
+    width:800px;
+    margin:10px;
+    padding:10px;
+    border-radius: 20px;
+}
 .table{
     border-collapse: collapse;
     margin: 25px 0;
@@ -20,10 +56,12 @@ header h1 {
     font-family: sans-serif;
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    text-align:center;
+    margin: 0 auto;
 }
 
 .table thead tr {
-    background-color: #009879;
+    background-color: purple;
     color: #ffffff;
     text-align: left;
 }
@@ -31,4 +69,8 @@ header h1 {
 .table th,
 .table td {
     padding: 12px 15px;
+}
+
+.table tbody {
+    background-color:grey;
 }
