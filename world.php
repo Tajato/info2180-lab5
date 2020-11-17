@@ -6,29 +6,67 @@ $dbname = 'world';
 $country = $_GET['country'];
 $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
 $stmt = $conn->query("SELECT * FROM countries WHERE name LIKE '%$country%'");
-
+// $stmtt = $conn->query("SELECT countries.name AS country, cities.name AS city FROM countries, cities WHERE countries.code = cities.country_code AND countries.name = '%$country%'");
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// $resultss = $stmtt->fetchAll(PDO::FETCH_ASSOC);
 
 
-echo '<table>';
-echo '<tr>';
-echo '<th> Country Name</th>';
-echo '<th> Continent</th>';
-echo '<th> Independence Year</th>';
-echo '<th> Head of State</th>';
-echo '</tr>';
+
 ?>
-<?php if (isset($country)) { 
-   foreach ($results as $row){
-  
-  echo '<tr>';
-   echo '<td>'; echo $row['name']; echo '</td>';
-   echo '<td>'; echo $row['continent']; echo '</td>';
-   echo '<td>'; echo $row['independence_year']; echo '</td>';
-   echo '<td>' . $row['head_of_state'] . '</td>';
-  
-  '</tr>';
-     } 
-    }
+<?php 
+     if (isset($_GET['context'])) {
+      $stmtt = $conn->query("SELECT cities.name AS city,cities.district AS district,cities.population AS population1 FROM cities JOIN countries ON countries.code = cities.country_code WHERE countries.name = '$country'");
+      $resultss = $stmtt->fetchAll(PDO::FETCH_ASSOC);
+    if ($_GET['context'] == 'cities') {
+      
+      echo '<table class="table">';
+   echo '<thead>';
+   echo '<tr>';
+   echo '<th> Name</th>';
+   echo '<th> District</th>';
+   echo '<th> Population</th>';
+   echo '<thead/>';
+   echo '</tr>';
+           foreach ($resultss as $roww) {
+            echo '<tbody>';
+            echo '<tr>';
+            echo '<td>'; echo $roww['city'];  echo '</td>';
+            echo '<td>'; echo $roww['district']; echo '</td>';
+            echo '<td>'; echo $roww['population1']; echo '</td>';
+         
+
+            echo '</tr>';
+            echo '<tbody/>';
+           
+        
+        
+
+           } 
+       } 
+      } else { 
+         echo '<table class="table">';
+         echo '<thead>';
+         echo '<tr>';
+         echo '<th> Country Name</th>';
+         echo '<th> Continent</th>';
+         echo '<th> Independence Year</th>';
+         echo '<th> Head of State</th>';
+         echo '<th> Population</th>';
+         echo '<thead/>';
+         echo '</tr>';
+         foreach ($results as $row){
+        echo '<tbody>';
+        echo '<tr>';
+         echo '<td>'; echo $row['name']; echo '</td>';
+         echo '<td>'; echo $row['continent']; echo '</td>';
+         echo '<td>'; echo $row['independence_year']; echo '</td>';
+         echo '<td>' . $row['head_of_state'] . '</td>';
+         echo '<td>' . $row['population'] . '</td>';
+      
+        echo '<tbody/>';
+        '</tr>';
+           } 
+         }
+
 echo '</table>';
 ?>

@@ -1,13 +1,34 @@
 /* Add your own styles */
 
-header {
-    background-color:purple;
+.header {
+    background-image: url('images/krzysztof-hepner-TH7TW20de9s-unsplash.jpg');
+    background-size: cover;
+    
 }
+
 
 header h1 {
     color:white;
+    padding:30px;
 }
 
-main {
-    background-color:seashell;
+
+.table{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+.table th,
+.table td {
+    padding: 12px 15px;
 }
